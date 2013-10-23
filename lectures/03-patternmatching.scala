@@ -132,7 +132,8 @@ def sort[T <: Ordered[T]](l: List[T]) = l(1) < l(2)
 // In-Class Exercise:
 // ==================
 
-// Write a class Stack (and possibly other classes) such
+// Write a class Stack (and possibly other classes) which supports
+// methods push, pop, top and isEmpty such
 // that the following code compiles and runs without errors
 
 /* class Fruit
