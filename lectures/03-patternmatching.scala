@@ -14,7 +14,7 @@
    singleton or companion objects) with a function "unapply" that takes
    a single argument and returns Option[T] for some tuple type T. The purpose
    of unapply is to take its argument apart and return those parts in
-   a tuple. 
+   a tuple. A pattern match failure is signalled by returning None.
    
    Let's look at an example: */
    
