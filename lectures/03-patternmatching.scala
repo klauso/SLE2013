@@ -135,8 +135,7 @@ def sort[T <: Ordered[T]](l: List[T]) = l(1) < l(2)
 // Write a class Stack (and possibly other classes) which supports
 // methods push, pop, top and isEmpty such
 // that the following code compiles and runs without errors
-
-/* class Fruit
+class Fruit
 class Apple extends Fruit
 class Orange extends Fruit
 
@@ -144,6 +143,8 @@ val s1 : Stack[Apple] = EmptyStack.push(new Apple)
 val s2 : Stack[Orange] = EmptyStack
 val f : Fruit = s1.push(new Orange).top
 val s4 : Stack[Object] = s1.pop
+val s5 : Stack[Fruit] = s1.push(new Orange)
+
 
 def size[A](x: Stack[A]) : Int = x match { 
     case EmptyStack => 0
@@ -151,7 +152,9 @@ def size[A](x: Stack[A]) : Int = x match {
 }
 
 assert(size(s1)== 1)
-*/
+
+
+
 	
 // ===================	
 // Homework Assignment 
