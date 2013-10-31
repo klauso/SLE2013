@@ -50,7 +50,8 @@ def transferFood(animala: ?, animalb: ?) {
 // ===================
 
 /*
-Homework is due on Nov 6, 23:59.
+Homework is due on Nov 6, 23:59 via email
+// to kos@informatik.uni-marburg.de
 
 Read this:
 http://www.scala-lang.org/old/node/111
