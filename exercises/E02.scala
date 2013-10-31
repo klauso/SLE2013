@@ -3,9 +3,8 @@
 abstract class Food {
   val calories : Int
 }  
-case class Grass() extends Food { val calories = 5}
-case class Corn() extends Food { val calories = 10}
-case class Fish() extends Food { val calories = 20}
+case class Grass(c: Int) extends Food { val calories = c}
+case class Fish(c: Int) extends Food { val calories = c}
 
 // Define three classes: Animal, Cow, Shark. Cow and Shark
 // should be subtypes of Animal. All animals should have
@@ -18,8 +17,8 @@ case class Fish() extends Food { val calories = 20}
 
 val shark = new Shark
 val cow = new Cow
-val grass = new Grass
-val fish = new Fish
+val grass = new Grass(10)
+val fish = new Fish(20)
 
 // this should work
 cow.eat(grass)
@@ -51,7 +50,8 @@ def transferFood(animala: ?, animalb: ?) {
 
 /*
 Homework is due on Nov 6, 23:59 via email
-// to kos@informatik.uni-marburg.de
+to kos@informatik.uni-marburg.de
+Please choose the subject title "SLE03"
 
 Read this:
 http://www.scala-lang.org/old/node/111
