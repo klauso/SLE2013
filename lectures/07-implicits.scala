@@ -306,23 +306,6 @@ definitions from scala.Predef : */
 
 // BEGIN  (slightly altered) copy from scala.Predef
 
-/**
-* An instance of `A <:< B` witnesses that `A` is a subtype of `B`.
-* Requiring an implicit argument of the type `A <:< B` encodes
-* the generalized constraint `A <: B`.
-*
-* @note we need a new type constructor `<:<` and evidence `conforms`,
-* as reusing `Function1` and `identity` leads to ambiguities in
-* case of type errors (`any2stringadd` is inferred)
-*
-* To constrain any abstract type T that's in scope in a method's
-* argument list (not just the method's own type parameters) simply
-* add an implicit argument of type `T <:< U`, where `U` is the required
-* upper bound; or for lower-bounds, use: `L <:< T`, where `L` is the
-* required lower bound.
-*
-* In part contributed by Jason Zaugg.
-*/
 import scala.annotation.implicitNotFound 
 
 @implicitNotFound(msg = "Cannot prove that ${From} <:< ${To}.")
@@ -339,7 +322,6 @@ sealed abstract class =:=[From, To] extends (From => To) with Serializable
 final val singleton_=:= = new =:=[Any,Any] { def apply(x: Any): Any = x }
 implicit def tpEquals[A]: A =:= A = singleton_=:=.asInstanceOf[A =:= A]
 
-
 // END  (slightly altered) copy from scala.Predef
 
 // As an application, consider a collection type. Collection types
@@ -348,14 +330,14 @@ implicit def tpEquals[A]: A =:= A = singleton_=:=.asInstanceOf[A =:= A]
 // For instance, the sum of a list can be computed if the list
 // consists of integers, but not if it consists of (say) characters or buttons.
 
-case class MyList[A](l:List[A]) { // 'A' can be substituted with any type
+case class MyList[A](l:List[A]) { // no constraints on A
     
-	// a method like apply is useful for arbitrary As
+	// a method like apply is useful for arbitrary A's
     def apply(index: Int) = l(index)
 	
 	// but the method sum is not, hence we require evidence
 	// that A is Int.
-	// Note that the "+" operator can be applied to the As only
+	// Note that the "+" operator can be applied to the A's only
 	// due to the type equality constraint.
 	def sum(implicit ev : A =:= Int) = l.foldLeft(0)(_+_)
 	
@@ -364,8 +346,10 @@ case class MyList[A](l:List[A]) { // 'A' can be substituted with any type
 // With these definitions, the following expression is well-typed:
 
 val res = MyList(List(1,2,3)).sum
+
 // but this one is not:
+
 // val res2 = MyList(List(true,false)).sum //  error: Cannot prove that Boolean =:= Int.
 
-// The main difference between <:< and =:= is in the variance annotations:
+// The difference between <:< and =:= is in the variance annotations:
 // =:= expresses type equality and <:< expresses subtyping
