@@ -42,7 +42,7 @@ assert(numberOfAdds(res2) == 2)
 // would not type-check on y do not typecheck on x either. For instance
 // the following query should be rejected by the type checker:
 
-for (i <- y; j <- i+1 if j+1 <= 3) yield j+42
+for (i <- y; j <- i+7 if j+1 <= 3) yield 42+j // error, cannot add 7 to a list
 
 // This part of the homework is optional, however. We will also accept solutions 
 // that are not typed
