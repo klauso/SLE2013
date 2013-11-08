@@ -30,7 +30,7 @@ assert(res1 == List(43,44))
 // , res2 should contain a representation of the query.
 // For instance, it should be possible to ask the representation
 // a question like "how many additions show up in the query?".
-// Proof that this works by writing a function "numberOfAdds"
+// Prove that this works by writing a function "numberOfAdds"
 // that counts the number of additions in a query:
 assert(numberOfAdds(res2) == 2)
 
@@ -76,3 +76,5 @@ implicit class Num(n: Int) extends Exp[Int]  // typed
 // this one might come in handy.
 case class Fun(f: Exp => Exp) extends Exp // untyped
 case class Fun[S,T](f: Exp[S] => Exp[T]) extends Exp[S=>T] // typed
+// To analyze a function in that representation, you can apply f
+// to some dummy expression.
