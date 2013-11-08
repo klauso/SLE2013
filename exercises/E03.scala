@@ -78,3 +78,7 @@ case class Fun(f: Exp => Exp) extends Exp // untyped
 case class Fun[S,T](f: Exp[S] => Exp[T]) extends Exp[S=>T] // typed
 // To analyze a function in that representation, you can apply f
 // to some dummy expression.
+
+// If you want to debug your solution, it might be useful to desugar
+// the for comprehension by hand and try your ListWrapper in terms
+// of the desugared query first.
