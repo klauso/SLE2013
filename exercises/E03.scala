@@ -12,7 +12,7 @@ Please choose the subject title "SLE04"
 // Consider the following list and for comprehension:
 
 val x = List(List(1,2), List(3,4))
-val res1 = for (i <- x; j <- i if j+1 <= 3) yield j+42
+val res1 = for (i <- x; j <- i if j+1 <= 3) yield 42+j
 
 // Your task is to write a function ListWrapper, such that
 // the following code, or code which is at least very similar
@@ -20,7 +20,7 @@ val res1 = for (i <- x; j <- i if j+1 <= 3) yield j+42
 
 val y = ListWrapper(x)
 
-val res2 = for (i <- y; j <- i if j+1 <= 3) yield j+42
+val res2 = for (i <- y; j <- i if j+1 <= 3) yield 42+j
 
 
 // The intended effect of ListWrapper is that the for comprehension
