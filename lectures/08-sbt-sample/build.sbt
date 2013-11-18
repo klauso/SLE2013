@@ -10,8 +10,11 @@ compileOptions += "-Xprint:typer"
 
 scalacOptions += "-Xprint:typer"
 
-//libraryDependencies += "org.scala-lang" % "scala-actors" % scalaVersion.value
+//Some example dependencies:
 
-//libraryDependencies += "org.scalatest" % "scalatest" %% "1.0"
+libraryDependencies ++= Seq(
+    "org.scala-lang" % "scala-actors" % scalaVersion.value,
+    "org.scalatest" %% "scalatest" % "2.0"
+  )
 
 sample2 := Seq("a", "b")
