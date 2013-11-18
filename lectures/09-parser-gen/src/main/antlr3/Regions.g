@@ -2,26 +2,26 @@
 
 grammar Regions;
 
-options { language = Scala; }
+//options { language = Scala; }
 @header{
-  package regionsparser
-  import regions._
-
-//  object RegionsParser {
-//  }
+  package regionsparser;
+  import regions.*;
 }
-
 @lexer::header{
-  package regionsparser
+  package regionsparser;
 }
 
 @members {
-      def main(args: Array[String]) {
-        val lex = new RegionsLexer(new ANTLRFileStream(args(0)))
-        val tokens = new CommonTokenStream(lex)
-        val parser = new RegionsParser(tokens)
+  public static void main(String[] args) throws Exception {
+        RegionsLexer lex = new RegionsLexer(new ANTLRFileStream(args[0]));
+        CommonTokenStream tokens = new CommonTokenStream(lex);
+        RegionsParser parser = new RegionsParser(tokens);
 
-        println(parser.region())
+        try {
+            System.out.println(parser.region());
+        } catch (RecognitionException e)  {
+            e.printStackTrace();
+        }
     }
 }
 
@@ -60,8 +60,8 @@ region returns [Region r]:
 
 //What happens if we try to use this rule?
 //float returns [double value]
-floatNumber returns [Double value]
-    :   d=DOUBLE {value = Double.parseDouble(d.getText()); } ;
+floatNumber returns [double value]
+    :   d=DOUBLE {value = Double.parseDouble(d.getText());} ;
 
 
 //number returns [int value]
