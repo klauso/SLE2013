@@ -1,0 +1,1 @@
+scale(2, union(unitcircle, union(unitcircle, scale(2, unitcircle))))
