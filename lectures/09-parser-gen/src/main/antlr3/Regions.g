@@ -2,7 +2,6 @@
 
 grammar Regions;
 
-//options { language = Scala; }
 @header{
   package regionsparser;
   import regions.*;
