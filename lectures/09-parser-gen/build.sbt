@@ -1,3 +1,3 @@
 antlrSettings
 
-//antlrPluginConfiguration in Antlr := PluginConfiguration(targetLanguage = SCALA)
+antlrPluginConfiguration in Antlr := PluginConfiguration(targetLanguage = SCALA)
