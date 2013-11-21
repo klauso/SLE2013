@@ -1,5 +1,5 @@
 resolvers ++= Seq(
-  //"stefri" at "http://stefri.github.com/repo/releases"
+  "stefri" at "http://stefri.github.com/repo/releases"
 )
 
-addSbtPlugin("com.github.stefri" % "sbt-antlr" % "0.5.1")
+addSbtPlugin("com.github.stefri" % "sbt-antlr" % "0.5")
