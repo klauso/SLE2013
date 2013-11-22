@@ -132,3 +132,4 @@ floatNumber returns [double value]
 //References on Antlr 3 itself:
 //http://www.antlr.org/wiki/display/ANTLR3/Five+minute+introduction+to+ANTLR+3
 //http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required
+//http://www.antlr.org/wiki/display/ANTLR3/FAQ+-+Getting+Started
