@@ -42,11 +42,6 @@ object Macros {
   def trace(x: Any): Unit = macro trace_impl
   def trace_impl(c: Context)(x: c.Expr[Any]): c.Expr[Unit] = {
     import c.universe._
-    //Wrong!
-    //c.Expr(q"""println(s"The value of ${show(x)} is ${x}")""")
-    //Not implemented!
-    //c.Expr(q"""println(s${s"The value of ${show(x.tree)} is $${x}"})""")
-    //Simpler:
     c.Expr(q"""println("The value of %s is %s" format (${show(x.tree)}, $x))""")
   }
 }
