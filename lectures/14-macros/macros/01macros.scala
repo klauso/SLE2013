@@ -42,6 +42,31 @@ object Macros {
   def trace(x: Any): Unit = macro trace_impl
   def trace_impl(c: Context)(x: c.Expr[Any]): c.Expr[Unit] = {
     import c.universe._
-    c.Expr(q"""println("The value of %s is %s" format (${show(x.tree)}, $x))""")
+    c.Expr(q"""println("The value of %s is %s" format (${show(x)}, $x))""")
+
+    //Question: what's wrong if we write instead:
+    //c.Expr(q"""println(${"The value of %s is %s" format (show(x), x)})""")
   }
+  //Now, try running 02macrosClient.scala
+
+  /*
+   To repeat:
+
+   Macros are programs that can be invoked in user programs, similarly to functions, but which
+   - are executed at compile-time, that is, at runtime of the compiler
+   - manipulate the program, and more in general part of the compiler state.
+
+   Moreover:
+   Programs which manipulate other programs are called *metaprograms*.
+   Macros are metaprograms!
+
+   Macros are run on code before it is executed. In compiled languages, that
+   means at compile-time; in interpreted languages, this typically means when
+   the code is loaded, but code loading and execution are often less strictly
+   separated. We will ignore interpreted languages.
+
+   Since macros act at compile-time, sometimes they can be used in contexts where
+   functions are not allowed because that context contains something that must be
+   known at compile-time (declarations of types/methods/etc.).
+   */
 }
