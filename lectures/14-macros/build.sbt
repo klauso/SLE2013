@@ -21,3 +21,6 @@ libraryDependencies in ThisBuild += compilerPlugin("org.scalamacros" % "paradise
 //  libraryDependencies += compilerPlugin(dependency)
 //We instead use compilerPlugin to be able to specify the scope.
 //Strictly speaking, this compiler plugin is only needed for the macros project; however, I chose to make it available everywhere for simplicity.
+
+// To enable debugging for macros, you need to adjust compiler options.
+// > set scalacOptions in ThisBuild += "-Ymacro-debug-lite"
