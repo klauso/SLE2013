@@ -10,8 +10,6 @@ object MacrosClient extends App {
   trace(42)
   trace(answer)
 
-  trace(expr.m1(m2(m3)))
-
   // Observe the difference in results.
   trace(plus1Macro(answer))
   trace(plus1(answer))
