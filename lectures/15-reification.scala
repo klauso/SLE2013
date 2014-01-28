@@ -53,6 +53,16 @@ object Main extends scala.App {
       }
     })
 
+  // Do the normalization in one step, as discussed for Jona's question and as done by LMS. This gives the same results.
+  def fusionBetaReduce[T](e: Exp[ShortcutFusion.Semantics with DeBrujin.Semantics, T]) =
+    e fold (new DeBrujin.BetaReducingReification with ShortcutFusion.FusingReification {
+      outer =>
+      type Language = DeBrujin.Semantics with ShortcutFusion.Semantics
+      def substitutor[S] = new DeBrujin.Substitution[S] with ShortcutFusion.IgnoreContext {
+        val base: outer.type = outer
+      }
+    })
+
   def toHoas[T](e: Exp[ShortcutFusion.Semantics with DeBrujin.Semantics, T]) =
     (e fold (new HOAS.FromDeBrujin with ShortcutFusion.IgnoreContext {
       val base = new HOAS.Reification with ShortcutFusion.Reification {
@@ -73,6 +83,9 @@ object Main extends scala.App {
   trace(afterFusion)
   val betaReduced = betaReduce(afterFusion)
   trace(betaReduced)
+
+  val oneStepOptimized = fusionBetaReduce(beforeFusion)
+  trace(oneStepOptimized)
 }
 
 /*
