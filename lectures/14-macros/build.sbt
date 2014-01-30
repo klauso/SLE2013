@@ -12,6 +12,9 @@ scalaVersion in ThisBuild := "2.10.3"
 // Add Scala reflection library. This is is needed for all projects using reflection, macros or both.
 libraryDependencies in ThisBuild += "org.scala-lang" % "scala-reflect" % scalaVersion.value
 
+//Add macro-paradise support library.
+libraryDependencies in ThisBuild += "org.scalamacros" % "quasiquotes" % "2.0.0-M3" cross CrossVersion.full
+
 // Add the macro-paradise compiler plugin: This is needed to use quasiquotes
 // and other extended macro features.
 // This dependency is only needed at compile time: the generated code does not
