@@ -107,7 +107,8 @@ Now g(e), after inlining (that is, in fact, beta-reduction) reduces to a value
 which contains multiple copies of e, thus of f, so the produced term violates
 the Barendregt convention.
 
-However this is no concern here, because 
+However this is no concern here because we use sharing to represent copied terms and thus f 
+exists only once in memory.
 */
 }
 
