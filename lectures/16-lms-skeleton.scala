@@ -40,8 +40,8 @@ trait BaseExp extends Base {
 
   //Not shown in the lecture — we need to use in fact two hash maps, to
   //implement mappings in both directions.
-  private val symMap: mutable.HashMap[Sym[_], Def[_]] = new mutable.HashMap()
-  private val defMap: mutable.HashMap[Def[_], Sym[_]] = new mutable.HashMap()
+  private lazy val symMap: mutable.HashMap[Sym[_], Def[_]] = new mutable.HashMap()
+  private lazy val defMap: mutable.HashMap[Def[_], Sym[_]] = new mutable.HashMap()
 
   //Implementation note:
   //I use a type ascription to get a type error if the type of the expression later changes.
